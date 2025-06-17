@@ -1,0 +1,68 @@
+.quiz-game {
+  text-align: center;
+  padding: 40px;
+  background: linear-gradient(to right, #e0eafc, #cfdef3);
+  min-height: 100vh;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.quiz-title {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #222;
+  margin-bottom: 20px;
+}
+
+.question-box {
+  margin-bottom: 30px;
+}
+
+.question-text {
+  font-size: 1.5rem;
+  font-weight: 500;
+  color: #333;
+}
+
+.options-container {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.option-btn {
+  padding: 15px 30px;
+  border: none;
+  border-radius: 12px;
+  font-size: 1rem;
+  font-weight: bold;
+  color: white;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  min-width: 120px;
+}
+
+.option-btn:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Kahoot-style button colors */
+.option-btn.green {
+  background-color: #28a745;
+}
+
+.option-btn.blue {
+  background-color: #007bff;
+}
+
+.option-btn.red {
+  background-color: #dc3545;
+}
+
+.option-btn.yellow {
+  background-color: #ffc107;
+  color: black;
+}
