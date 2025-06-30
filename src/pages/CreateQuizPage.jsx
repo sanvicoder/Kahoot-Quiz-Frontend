@@ -22,13 +22,16 @@ export function CreateQuizPage() {
   };
 
   const handleSubmit = async () => {
-    const token = prompt('Enter JWT token');
+     const token = localStorage.getItem('token');
+  if (!token) {
+    alert('You must be logged in as admin to create a quiz.');
+    return;
+  }
     const payload = { title, questions };
     const res = await createQuiz(payload, token);
     console.log(res);
     alert('Quiz Created! ID: ${res.id}');
   };
-
   return (
     <div className="page-wrapper">
       <div className="form-container">
@@ -49,7 +52,7 @@ export function CreateQuizPage() {
         <button onClick={addOption}>Add Option</button>
 
         <ul>
-          {currentQuestion.options.map((o, idx) => <li key={idx}>{o.text} - {o.color} - {o.isCorrect ? 'Correct' : 'Wrong'}</li>)}
+          {currentQuestion.options.map((o, idx) => <li key={idx}>{o.text} - {o.color} - {o.isCorrect ? 'Correct' : 'Incorrect'}</li>)}
         </ul>
 
         <button onClick={addQuestion}>Add Question</button>

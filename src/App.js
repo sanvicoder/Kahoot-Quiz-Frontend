@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import AdminRegister from './pages/AdminRegister';
 import AdminLogin from './pages/AdminLogin';
 import PlayerPage from './pages/PlayerPage';
@@ -17,25 +17,10 @@ import { ViewQuizPage } from './pages/ViewQuizPage';
 import './styles/global.css';
 
 function App() {
-  const isAdminLoggedIn = !!localStorage.getItem('token');
-
   return (
     <Router>
-      <div className="navbar">
-        <Link to="/">Home</Link>
-            <Link to="/admin/register">Register</Link>
-            <Link to="/admin/login">Login</Link>
-        <Link to="/player/join">Player</Link>
-        {isAdminLoggedIn && (
-          <>
-            <Link to="/quiz/create">Create Quiz</Link>
-            <Link to="/quiz/add-question">Add Question</Link>
-            <Link to="/quiz/view">View Quiz</Link>
-          </>
-        )}
-        <Link to="/play">Play Quiz</Link>
-      </div>
-
+      <Navbar /> {/* ✅ Use your dynamic Navbar here */}
+      
       <Routes>
         <Route path="/" element={<LandingPage />} />
         <Route path="/admin/register" element={<AdminRegister />} />
@@ -43,7 +28,7 @@ function App() {
         <Route path="/player/join" element={<PlayerPage />} />
         <Route path="/lobby" element={<LobbyPage />} />
         <Route path="/profile" element={<ProfilePage />} />
-        
+
         {/* ✅ Protected admin-only routes */}
         <Route
           path="/quiz/create"

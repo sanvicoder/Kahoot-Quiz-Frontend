@@ -1,5 +1,5 @@
 import React from 'react';
-
+import { Link } from "react-router-dom";
 const LobbyPage = () => {
   const playerInfo = JSON.parse(localStorage.getItem('playerInfo'));
 
@@ -9,11 +9,13 @@ const LobbyPage = () => {
       {playerInfo && (
         <>
           <p><strong>Nickname:</strong> {playerInfo.nickname}</p>
-          <p><strong>Join Code:</strong> {playerInfo.joinCode}</p>
+          {/* <p><strong>Player ID:</strong> {playerInfo.id}</p> */}
         </>
       )}
+       <Link to="/play" className="btn">Play Quiz</Link>
     </div>
   );
 };
 
 export default LobbyPage;
+

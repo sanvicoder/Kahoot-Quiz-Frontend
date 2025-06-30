@@ -16,7 +16,11 @@ export function AddQuestionPage() {
   };
 
   const handleSubmit = async () => {
-    const token = prompt('Enter JWT token');
+      const token = localStorage.getItem('token');
+  if (!token) {
+    alert('You must be logged in as admin to create a quiz.');
+    return;
+  }
     const res = await addQuestionToQuiz(quizId, question, token);
     console.log(res);
     alert('Question Added!');
@@ -40,7 +44,7 @@ export function AddQuestionPage() {
         <button onClick={addOption}>Add Option</button>
 
         <ul>
-          {question.options.map((o, idx) => <li key={idx}>{o.text} - {o.color} - {o.isCorrect ? 'Correct' : 'Wrong'}</li>)}
+          {question.options.map((o, idx) => <li key={idx}>{o.text} - {o.color} - {o.isCorrect ? 'Correct' : 'Incorrect'}</li>)}
         </ul>
 
         <button onClick={handleSubmit}>Add Question</button>

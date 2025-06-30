@@ -28,12 +28,14 @@ const PlayerPage = () => {
 
       if (!res.ok) throw new Error(data.message || 'Failed to join');
 
-      // Save in localStorage
-      localStorage.setItem('playerInfo', JSON.stringify(data.player));
+      // ✅ Save nickname and id only
+      const cleanedPlayer = {
+        nickname: data.player.nickname,
+        id: data.player.id,
+      };
+      localStorage.setItem('playerInfo', JSON.stringify(cleanedPlayer));
+      setPlayerInfo(cleanedPlayer);
 
-      setPlayerInfo(data.player);
-
-      // Redirect to /lobby after 2s (optional)
       setTimeout(() => {
         navigate('/lobby');
       }, 2000);
@@ -60,7 +62,6 @@ const PlayerPage = () => {
           <h3>🎉 Joined Successfully!</h3>
           <p><strong>Nickname:</strong> {playerInfo.nickname}</p>
           <p><strong>Player ID:</strong> {playerInfo.id}</p>
-          <p><strong>Join Code:</strong> {playerInfo.joinCode}</p>
           <p>Redirecting to lobby...</p>
         </div>
       )}
@@ -69,4 +70,3 @@ const PlayerPage = () => {
 };
 
 export default PlayerPage;
-
