@@ -10,7 +10,7 @@ import PlayQuiz from './pages/PlayQuiz';
 import QuizGame from './pages/QuizGame';
 import ProtectedRoute from './components/ProtectedRoute';
 import Navbar from './components/Navbar';
-
+import { ManageQuestionPage } from './pages/ManageQuestionPage';
 import { CreateQuizPage } from './pages/CreateQuizPage';
 import { AddQuestionPage } from './pages/AddQuestionPage';
 import { ViewQuizPage } from './pages/ViewQuizPage';
@@ -54,7 +54,14 @@ function App() {
             </ProtectedRoute>
           }
         />
-
+        <Route
+  path="/quiz/:quizId/question/:questionId"
+  element={
+    <ProtectedRoute>
+      <ManageQuestionPage />
+    </ProtectedRoute>
+  }
+/>
         <Route path="/play" element={<PlayQuiz />} />
         <Route path="/quiz/:quizId" element={<QuizGame />} />
       </Routes>
